@@ -1,0 +1,67 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+// Home Section Styles
+.home {
+    .home-content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 8rem 2.4rem 4rem 2.4rem;
+
+        .home-content-top {
+            display: flex; 
+            justify-content: space-between;
+            align-items: end;
+
+            .intro {
+                font-size: 3.2rem;
+                font-weight: 500;
+                max-width: 50rem;
+            }
+
+            .description {
+                color: #6B6B6B;
+                font-size: 2rem;
+                font-weight: 400;
+                max-width: 50rem;
+            }
+        }
+    }
+}
+
+// About Section Styles
+.about {
+    padding: 1.6rem 2.4rem;
+    border-top: 1px solid #171717;
+    height: 100dvh;
+
+    .about-content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .about-content-top {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .about-content-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+
+            p {
+                font-size: 2.8rem;
+                max-width: 50%;
+            }
+        }
+    }
+}
+
+.section-name, .number-section {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #171717;
+}

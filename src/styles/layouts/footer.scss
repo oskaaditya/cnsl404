@@ -1,0 +1,52 @@
+.footer {
+    padding: 2.4rem 0 0 0;
+    height: 45rem;
+    width: 100%;
+    overflow: hidden;
+
+        .footer-content-wrap{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: start;
+            gap: 2rem;
+            width: 100%;
+            height: 100%;
+
+            .footer-content-start {
+                display: flex;
+                min-width: 0;
+                width: 97.5%;
+                align-items: start;
+                justify-content: space-between;
+                padding: 0 2.4rem;
+
+                .footer-message-available {
+                    font-size: 3.2rem;
+                    max-width: 40rem;
+                    font-weight: 400;
+                }
+
+                .footer-connect-links {
+                    display: flex;
+                    gap: .6rem;
+                    font-size: 1.6rem;
+                }
+            }
+
+            .footer-content-end {
+                width: 100%;
+
+                .footer-logo {
+                    font-size: 40rem;
+                    font-weight: 600;
+                    letter-spacing: -0.08em;
+                    color: #171717;
+                    transform: translateX(-4rem);
+                    margin-bottom: -10rem;
+                }
+            }
+
+            
+        }
+}

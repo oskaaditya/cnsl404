@@ -1,0 +1,52 @@
+{
+  "format": "page",
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo_text": {
+        "type": "Text",
+        "config": {
+          "label": "Logo Text",
+          "placeholder": ""
+        }
+      },
+      "logo_hover_text": {
+        "type": "Text",
+        "config": {
+          "label": "Logo Hover Text",
+          "placeholder": ""
+        }
+      },
+      "navigations": {
+        "type": "Group",
+        "config": {
+          "label": "Navigations",
+          "repeat": true,
+          "fields": {
+            "navigation_link": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}

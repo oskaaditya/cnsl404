@@ -1,0 +1,171 @@
+@use "variables";
+
+// Mixins
+// Reusable Sass mixins
+
+// Media queries
+@mixin mobile {
+  @media (max-width: calc(#{variables.$breakpoint-sm} - 0.1rem)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{variables.$breakpoint-sm}) and (max-width: calc(#{variables.$breakpoint-md} - 0.1rem)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{variables.$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: #{variables.$breakpoint-lg}) {
+    @content;
+  }
+}
+
+// Hover effects (only on non-touch devices)
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Focus styles
+@mixin focus {
+  &:focus {
+    outline: 0.125rem solid variables.$accent-color;
+    outline-offset: 0.125rem;
+    @content;
+  }
+}
+
+// Button styles
+@mixin button-base {
+  appearance: none;
+  border-radius: variables.$border-radius-full;
+  height: 3rem;
+  padding: 0 1.25rem;
+  border: 0.0625rem solid transparent;
+  transition: background variables.$transition-normal, color variables.$transition-normal, border-color variables.$transition-normal;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-tight;
+  font-weight: variables.$font-weight-medium;
+  text-decoration: none;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: variables.$primary-color;
+  color: variables.$secondary-color;
+  gap: variables.$spacing-sm;
+
+  @include hover {
+    background: variables.$button-primary-hover;
+    border-color: transparent;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  border-color: variables.$gray-alpha-200-light;
+  min-width: 9.875rem;
+
+  @include hover {
+    background: variables.$button-secondary-hover;
+    border-color: transparent;
+  }
+}
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Grid utilities
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}
+
+@mixin grid-template-rows($rows) {
+  display: grid;
+  grid-template-rows: $rows;
+  align-items: center;
+  justify-items: center;
+}
+
+// Typography
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-balance {
+  text-wrap: balance;
+}
+
+// Spacing utilities
+@mixin margin-x($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin margin-y($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin padding-x($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin padding-y($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+// Dark mode
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// Visually hidden (for screen readers)
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

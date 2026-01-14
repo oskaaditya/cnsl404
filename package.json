@@ -1,0 +1,40 @@
+{
+  "name": "oska-aditya",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "slicemachine": "start-slicemachine"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@prismicio/client": "^7.21.3",
+    "@prismicio/next": "^2.1.1",
+    "@prismicio/react": "^3.2.2",
+    "gsap": "^3.14.2",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.93",
+    "@slicemachine/init": "^2.10.49",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.7.4",
+    "rxjs": "^7.8.2",
+    "sass": "^1.97.2",
+    "slice-machine-ui": "^2.20.5",
+    "typescript": "^5"
+  }
+}

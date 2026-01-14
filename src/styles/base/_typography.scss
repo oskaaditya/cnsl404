@@ -1,0 +1,144 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+// Typography styles
+// Font families, sizes, weights, and text utilities
+//
+// Available Helvetica Neue Font Weights:
+// - .font-light (300) - HelveticaNeue-Light.woff2
+// - .font-normal (400) - HelveticaNeue.woff2  
+// - .font-medium (500) - HelveticaNeue-Medium.woff2
+// - .font-semibold (600) - Fallback to system font
+// - .font-bold (700) - Fallback to system font
+//
+// Usage Examples:
+// <h1 className="font-helvetica font-bold">Bold Helvetica Neue</h1>
+// <p className="font-helvetica font-light">Light Helvetica Neue</p>
+// <span className="font-helvetica font-medium">Medium Helvetica Neue</span>
+
+// Font families
+.font-sans {
+  font-family: variables.$font-family-sans;
+}
+
+.font-helvetica {
+  font-family: variables.$font-family-helvetica;
+}
+
+.font-dotstudio {
+  font-family: variables.$font-family-dotstudio;
+}
+
+.font-mono {
+  font-family: variables.$font-family-mono;
+}
+
+// Font sizes
+.text-xs {
+  font-size: variables.$font-size-xs;
+  line-height: variables.$line-height-tight;
+}
+
+.text-sm {
+  font-size: variables.$font-size-sm;
+  line-height: variables.$line-height-tight;
+}
+
+.text-base {
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-normal;
+}
+
+.text-lg {
+  font-size: variables.$font-size-lg;
+  line-height: variables.$line-height-normal;
+}
+
+.text-xl {
+  font-size: variables.$font-size-xl;
+  line-height: variables.$line-height-tight;
+}
+
+.text-2xl {
+  font-size: variables.$font-size-2xl;
+  line-height: variables.$line-height-tight;
+}
+
+.text-3xl {
+  font-size: variables.$font-size-3xl;
+  line-height: variables.$line-height-tight;
+}
+
+.text-4xl {
+  font-size: variables.$font-size-4xl;
+  line-height: variables.$line-height-tight;
+}
+
+// Font weights
+.font-light {
+  font-weight: variables.$font-weight-light;
+}
+
+.font-normal {
+  font-weight: variables.$font-weight-normal;
+}
+
+.font-medium {
+  font-weight: variables.$font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: variables.$font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: variables.$font-weight-bold;
+}
+
+// Text alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Text decoration
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+// Text utilities
+.truncate {
+  @include mixins.text-truncate;
+}
+
+.balance {
+  @include mixins.text-balance;
+}
+
+// Letter spacing
+.tracking-tight {
+  letter-spacing: -0.01em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}

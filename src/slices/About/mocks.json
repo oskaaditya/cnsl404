@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_name": {
+				"__TYPE__": "FieldContent",
+				"value": "make",
+				"type": "Text"
+			},
+			"number_section": {
+				"__TYPE__": "FieldContent",
+				"value": "account",
+				"type": "Text"
+			},
+			"about_desciption": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolor dolore ad cillum proident cillum elit reprehenderit deserunt non sint. Ullamco anim duis culpa deserunt aliqua exercitation est ullamco proident minim magna voluptate."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,59 @@
+@use "sass:color";
+@use "sass:map";
+// Functions
+// Custom Sass functions
+
+// Convert px to rem (base 16px = 1rem)
+@function rem($pixels, $base-font-size: 16) {
+  @return #{$pixels / $base-font-size}rem;
+}
+
+// Convert px to em (base 16px = 1em)
+@function em($pixels, $base-font-size: 16) {
+  @return #{$pixels / $base-font-size}em;
+}
+
+// Get color with opacity
+@function rgba-color($color, $opacity: 1) {
+  @return rgba($color, $opacity);
+}
+
+// Calculate contrast ratio
+@function contrast-ratio($color1, $color2) {
+  $l1: luminance($color1);
+  $l2: luminance($color2);
+  $ratio: ($l1 + 0.05) / ($l2 + 0.05);
+  @if $l2 > $l1 {
+    $ratio: 1 / $ratio;
+  }
+  @return $ratio;
+}
+
+// Calculate luminance
+@function luminance($color) {
+  $red: color.red($color) / 255;
+  $green: color.green($color) / 255;
+  $blue: color.blue($color) / 255;
+
+  $red: if($red <= 0.03928, $red / 12.92, pow(($red + 0.055) / 1.055, 2.4));
+  $green: if($green <= 0.03928, $green / 12.92, pow(($green + 0.055) / 1.055, 2.4));
+  $blue: if($blue <= 0.03928, $blue / 12.92, pow(($blue + 0.055) / 1.055, 2.4));
+
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+// Get z-index value
+@function z($layer) {
+  @return map.get($z-layers, $layer);
+}
+
+// Z-index layers map
+$z-layers: (
+  'dropdown': 1000,
+  'sticky': 1020,
+  'fixed': 1030,
+  'modal-backdrop': 1040,
+  'modal': 1050,
+  'popover': 1060,
+  'tooltip': 1070
+);

@@ -1,0 +1,54 @@
+{
+  "format": "page",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "footer_logo_text": {
+        "type": "Text",
+        "config": {
+          "label": "Footer Logo Text",
+          "placeholder": ""
+        }
+      },
+      "connect_link": {
+        "type": "Group",
+        "config": {
+          "label": "Connect Link",
+          "repeat": true,
+          "fields": {
+            "connect_link_item": {
+              "type": "Link",
+              "config": {
+                "label": "Connect Link Item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "available_freelance_project": {
+        "type": "Boolean",
+        "config": {
+          "label": "Available Freelance Project",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}
