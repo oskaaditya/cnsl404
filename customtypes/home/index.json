@@ -20,6 +20,13 @@
           "placeholder": ""
         }
       },
+      "hero_text_animation": {
+        "type": "Text",
+        "config": {
+          "label": "Hero Text Animation",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

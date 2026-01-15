@@ -32,7 +32,61 @@
             "label": "About Desciption",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6"
+            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,hyperlink"
+          }
+        },
+        "experience_list": {
+          "type": "Link",
+          "config": {
+            "label": "Experience List",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              {
+                "id": "experience",
+                "fields": [
+                  "label",
+                  {
+                    "id": "list_experience",
+                    "fields": [
+                      "position",
+                      "company",
+                      "time"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "services": {
+          "type": "Link",
+          "config": {
+            "label": "Services",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              {
+                "id": "services",
+                "fields": [
+                  "label",
+                  {
+                    "id": "services",
+                    "fields": [
+                      "service_name"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "about_image": {
+          "type": "Image",
+          "config": {
+            "label": "About Image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

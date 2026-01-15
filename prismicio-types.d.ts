@@ -70,6 +70,86 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
+ * Item in *Experience → List Experience*
+ */
+export interface ExperienceDocumentDataListExperienceItem {
+  /**
+   * Position field in *Experience → List Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.list_experience[].position
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  position: prismic.KeyTextField;
+
+  /**
+   * Company field in *Experience → List Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.list_experience[].company
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  company: prismic.KeyTextField;
+
+  /**
+   * Time field in *Experience → List Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.list_experience[].time
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  time: prismic.KeyTextField;
+}
+
+/**
+ * Content for Experience documents
+ */
+interface ExperienceDocumentData {
+  /**
+   * Label field in *Experience*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * List Experience field in *Experience*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.list_experience[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_experience: prismic.GroupField<
+    Simplify<ExperienceDocumentDataListExperienceItem>
+  >;
+}
+
+/**
+ * Experience document from Prismic
+ *
+ * - **API ID**: `experience`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ExperienceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ExperienceDocumentData>,
+    "experience",
+    Lang
+  >;
+
+/**
  * Item in *Footer → Connect Link*
  */
 export interface FooterDocumentDataConnectLinkItem {
@@ -185,6 +265,17 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   description: prismic.KeyTextField;
+
+  /**
+   * Hero Text Animation field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.hero_text_animation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  hero_text_animation: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Home*
@@ -331,10 +422,70 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Services → Services*
+ */
+export interface ServicesDocumentDataServicesItem {
+  /**
+   * Service Name field in *Services → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.services[].service_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  service_name: prismic.KeyTextField;
+}
+
+/**
+ * Content for Services documents
+ */
+interface ServicesDocumentData {
+  /**
+   * Label field in *Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Services field in *Services*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.services[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  services: prismic.GroupField<Simplify<ServicesDocumentDataServicesItem>>;
+}
+
+/**
+ * Services document from Prismic
+ *
+ * - **API ID**: `services`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServicesDocumentData>,
+    "services",
+    Lang
+  >;
+
 export type AllDocumentTypes =
+  | ExperienceDocument
   | FooterDocument
   | HomeDocument
-  | NavigationDocument;
+  | NavigationDocument
+  | ServicesDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -369,6 +520,53 @@ export interface AboutSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   about_desciption: prismic.RichTextField;
+
+  /**
+   * Experience List field in *About → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.experience_list
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  experience_list: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "experience";
+        fields: [
+          "label",
+          { id: "list_experience"; fields: ["position", "company", "time"] },
+        ];
+      },
+    ]
+  >;
+
+  /**
+   * Services field in *About → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.services
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  services: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "services";
+        fields: ["label", { id: "services"; fields: ["service_name"] }];
+      },
+    ]
+  >;
+
+  /**
+   * About Image field in *About → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.about_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  about_image: prismic.ImageField<never>;
 }
 
 /**
@@ -419,6 +617,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ExperienceDocument,
+      ExperienceDocumentData,
+      ExperienceDocumentDataListExperienceItem,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataConnectLinkItem,
@@ -430,6 +631,9 @@ declare module "@prismicio/client" {
       NavigationDocumentData,
       NavigationDocumentDataNavigationsItem,
       NavigationDocumentDataSlicesSlice,
+      ServicesDocument,
+      ServicesDocumentData,
+      ServicesDocumentDataServicesItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,
