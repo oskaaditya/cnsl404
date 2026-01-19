@@ -238,7 +238,7 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = AboutSlice;
+type HomeDocumentDataSlicesSlice = WorksSlice | AboutSlice;
 
 /**
  * Content for Home documents
@@ -480,12 +480,121 @@ export type ServicesDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Work → Assets*
+ */
+export interface WorkDocumentDataAssetsItem {
+  /**
+   * Asset Item field in *Work → Assets*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.assets[].asset_item
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  asset_item: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Work → Categories*
+ */
+export interface WorkDocumentDataCategoriesItem {
+  /**
+   * Category field in *Work → Categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.categories[].category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  category: prismic.KeyTextField;
+}
+
+/**
+ * Content for Work documents
+ */
+interface WorkDocumentData {
+  /**
+   * Project name field in *Work*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.project_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  project_name: prismic.KeyTextField;
+
+  /**
+   * Project Description field in *Work*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.project_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  project_description: prismic.KeyTextField;
+
+  /**
+   * Assets field in *Work*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.assets[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  assets: prismic.GroupField<Simplify<WorkDocumentDataAssetsItem>>;
+
+  /**
+   * Categories field in *Work*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.categories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  categories: prismic.GroupField<Simplify<WorkDocumentDataCategoriesItem>>;
+
+  /**
+   * URL Portfolio field in *Work*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.url_portfolio
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  url_portfolio: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Work document from Prismic
+ *
+ * - **API ID**: `work`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WorkDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<WorkDocumentData>, "work", Lang>;
+
 export type AllDocumentTypes =
   | ExperienceDocument
   | FooterDocument
   | HomeDocument
   | NavigationDocument
-  | ServicesDocument;
+  | ServicesDocument
+  | WorkDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -596,6 +705,107 @@ type AboutSliceVariation = AboutSliceDefault;
  */
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
+/**
+ * Item in *Works → Default → Primary → Selected Works*
+ */
+export interface WorksSliceDefaultPrimarySelectedWorksItem {
+  /**
+   * Work Item field in *Works → Default → Primary → Selected Works*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.default.primary.selected_works[].work_item
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  work_item: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "work";
+        fields: [
+          "project_name",
+          "project_description",
+          { id: "assets"; fields: ["asset_item"] },
+          { id: "categories"; fields: ["category"] },
+        ];
+      },
+    ]
+  >;
+}
+
+/**
+ * Primary content in *Works → Default → Primary*
+ */
+export interface WorksSliceDefaultPrimary {
+  /**
+   * Section Name field in *Works → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.default.primary.section_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_name: prismic.KeyTextField;
+
+  /**
+   * Section Number field in *Works → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.default.primary.section_number
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_number: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *Works → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.default.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_description: prismic.KeyTextField;
+
+  /**
+   * Selected Works field in *Works → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.default.primary.selected_works[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  selected_works: prismic.GroupField<
+    Simplify<WorksSliceDefaultPrimarySelectedWorksItem>
+  >;
+}
+
+/**
+ * Default variation for Works Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type WorksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WorksSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Works*
+ */
+type WorksSliceVariation = WorksSliceDefault;
+
+/**
+ * Works Shared Slice
+ *
+ * - **API ID**: `works`
+ * - **Description**: Works
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type WorksSlice = prismic.SharedSlice<"works", WorksSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -634,11 +844,20 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataServicesItem,
+      WorkDocument,
+      WorkDocumentData,
+      WorkDocumentDataAssetsItem,
+      WorkDocumentDataCategoriesItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      WorksSlice,
+      WorksSliceDefaultPrimarySelectedWorksItem,
+      WorksSliceDefaultPrimary,
+      WorksSliceVariation,
+      WorksSliceDefault,
     };
   }
 }

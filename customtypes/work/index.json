@@ -1,0 +1,75 @@
+{
+  "format": "custom",
+  "id": "work",
+  "label": "Work",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "project_name": {
+        "type": "Text",
+        "config": {
+          "label": "Project name",
+          "placeholder": ""
+        }
+      },
+      "project_description": {
+        "type": "Text",
+        "config": {
+          "label": "Project Description",
+          "placeholder": ""
+        }
+      },
+      "assets": {
+        "type": "Group",
+        "config": {
+          "label": "Assets",
+          "repeat": true,
+          "fields": {
+            "asset_item": {
+              "type": "Image",
+              "config": {
+                "label": "Asset Item",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "categories": {
+        "type": "Group",
+        "config": {
+          "label": "Categories",
+          "repeat": true,
+          "fields": {
+            "category": {
+              "type": "Text",
+              "config": {
+                "label": "Category",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "url_portfolio": {
+        "type": "Link",
+        "config": {
+          "label": "URL Portfolio",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  }
+}

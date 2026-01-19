@@ -1,0 +1,45 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_name": {
+				"__TYPE__": "FieldContent",
+				"value": "in",
+				"type": "Text"
+			},
+			"section_number": {
+				"__TYPE__": "FieldContent",
+				"value": "raw",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "FieldContent",
+				"value": "essential",
+				"type": "Text"
+			},
+			"selected_works": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"work_item",
+								{
+									"key": "54aa4035-a92c-44d4-870c-148b7d585623",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

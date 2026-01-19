@@ -1,0 +1,78 @@
+{
+  "id": "works",
+  "type": "SharedSlice",
+  "name": "Works",
+  "description": "Works",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_name": {
+          "type": "Text",
+          "config": {
+            "label": "Section Name",
+            "placeholder": ""
+          }
+        },
+        "section_number": {
+          "type": "Text",
+          "config": {
+            "label": "Section Number",
+            "placeholder": ""
+          }
+        },
+        "section_description": {
+          "type": "Text",
+          "config": {
+            "label": "Section Description",
+            "placeholder": ""
+          }
+        },
+        "selected_works": {
+          "type": "Group",
+          "config": {
+            "label": "Selected Works",
+            "repeat": true,
+            "fields": {
+              "work_item": {
+                "type": "Link",
+                "config": {
+                  "label": "Work Item",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    {
+                      "id": "work",
+                      "fields": [
+                        "project_name",
+                        "project_description",
+                        {
+                          "id": "assets",
+                          "fields": [
+                            "asset_item"
+                          ]
+                        },
+                        {
+                          "id": "categories",
+                          "fields": [
+                            "category"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
