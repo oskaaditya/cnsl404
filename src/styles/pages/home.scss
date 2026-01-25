@@ -118,7 +118,7 @@
 
 // Works Section Styles
 .works {
-    padding: 1.6rem 2.4rem;
+    padding: 1.6rem 2.4rem 20rem 2.4rem;
     border-top: 1px solid #1717172c;
     position: relative;
     overflow: hidden;
@@ -150,16 +150,23 @@
         .works-content-bottom {
             display: flex;
             flex-direction: column;
-            gap: 3.2rem;
+            gap: 6.4rem;
 
             .work-item {
                 display: flex;
-                flex-direction: column;
-                gap: 1.6rem;
+                border-top: 1px solid #1717172c;
+                padding-top: 6.4rem;
+                flex-direction: row;
+                gap: 6.4rem;
+                &:first-child {
+                    border-top: none;
+                    padding-top: 0;
+                }
 
                 .work-item-images {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
+                    width: 100%;
                     gap: 1.6rem;
 
                     .work-item-image {
@@ -171,21 +178,26 @@
 
                 .work-item-info {
                     display: flex;
+                    width: 50%;
+                    flex-direction: column;
+                    align-items: end;
                     justify-content: space-between;
-                    gap: 1.6rem;
+                    gap: 3.2rem;
 
                     .work-item-info-start{
                         display: flex;
+                        align-items: end;
+                        text-align: right;
                         flex-direction: column;
                         gap: 0.4rem;
 
                         .work-item-name {
-                            font-size: 2rem;
+                            font-size: 2.4rem;
                             font-weight: 500;
                         }
     
                         .work-item-description {
-                            font-size: 1.8rem;
+                            font-size: 2rem;
                             font-weight: 400;
                             color: #6B6B6B;
                             max-width: 50%;
@@ -194,6 +206,7 @@
 
                     .work-item-categories {
                         font-size: 1.8rem;
+                        color: #6B6B6B;
                         font-weight: 500;
                     }
                 }

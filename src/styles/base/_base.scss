@@ -214,14 +214,14 @@ a:hover {
   color: #171717;
 }
 
-a:not(#logo) {
+a:not(#logo), a:not(.work-item-link) {
   box-shadow: inset 0 0 #171717;
   color: #171717;
   padding: .25rem .6rem;
   transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
 }
 
-a:hover:not(#logo) {
+a:hover:not(#logo), a:not(.work-item-link):hover {
   color: #FFF;
   box-shadow: inset 30rem 0 #171717;
 }

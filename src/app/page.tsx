@@ -1,5 +1,6 @@
 import { createClient } from "@/prismicio";
 import { asImageSrc, isFilled } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicLink, PrismicRichText } from "@prismicio/react";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -120,6 +121,7 @@ export default async function Home() {
                     </div>
                     <div className="work-item-info">
                       <div className="work-item-info-start">
+                        {/* <PrismicNextLink field={work.work_item.data?.url_portfolio} className="work-item-link">{work.work_item.data?.project_name}</PrismicNextLink> */}
                         <p className="work-item-name">{work.work_item.data?.project_name}</p>
                         <p className="work-item-description">{work.work_item.data?.project_description}</p>
                       </div>

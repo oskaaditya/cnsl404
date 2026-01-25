@@ -27,8 +27,8 @@
 							[
 								"work_item",
 								{
-									"key": "54aa4035-a92c-44d4-870c-148b7d585623",
 									"__TYPE__": "LinkContent",
+									"key": "7e34356e-5b20-4f4f-9312-c8aedac3d70b",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"

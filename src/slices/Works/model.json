@@ -62,7 +62,8 @@
                           "fields": [
                             "category"
                           ]
-                        }
+                        },
+                        "url_portfolio"
                       ]
                     }
                   ]

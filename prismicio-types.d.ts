@@ -726,6 +726,7 @@ export interface WorksSliceDefaultPrimarySelectedWorksItem {
           "project_description",
           { id: "assets"; fields: ["asset_item"] },
           { id: "categories"; fields: ["category"] },
+          "url_portfolio",
         ];
       },
     ]
