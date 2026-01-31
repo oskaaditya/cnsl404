@@ -11,10 +11,13 @@
 
     .navigations {
         display: flex;
+        width: 100%;
         gap: 2.4rem;
+        justify-content: end;
 
         a {
             font-size: 1.6rem;
+            width:auto;
             font-weight: 500;
         }
     }
