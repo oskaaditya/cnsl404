@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useFontsLoaded } from '@/app/contexts/fonts-loaded-context';
 
 let ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger | null = null;
 let SplitText: typeof import('gsap/SplitText').SplitText | null = null;
@@ -29,9 +30,11 @@ export default function FooterAnimation({
   children: React.ReactNode;
 }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const { fontsLoaded } = useFontsLoaded();
 
   useGSAP(
     () => {
+      if (!fontsLoaded) return;
       const footer = wrapperRef.current?.querySelector('footer');
       if (!footer) return;
 
@@ -111,7 +114,7 @@ export default function FooterAnimation({
         ease: 'expo.out',
       });
     },
-    { scope: wrapperRef }
+    { scope: wrapperRef, dependencies: [fontsLoaded] }
   );
 
   return <div ref={wrapperRef}>{children}</div>;

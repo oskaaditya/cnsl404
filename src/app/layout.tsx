@@ -1,6 +1,7 @@
 import "../styles/main.scss";
 import Footer from "./layouts/footer";
 import Navbar from "./layouts/navbar";
+import FontLoaderProvider from "./providers/font-loader-provider";
 import LenisProviders from "./providers/lenis-providers";
 
 export default function RootLayout({
@@ -11,13 +12,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LenisProviders>
-          <main>
-            <Navbar />
-            {children}
-            <Footer />
-          </main>
-        </LenisProviders>
+        <FontLoaderProvider>
+          <LenisProviders>
+            <main>
+              <Navbar />
+              {children}
+              <Footer />
+            </main>
+          </LenisProviders>
+        </FontLoaderProvider>
       </body>
     </html>
   );

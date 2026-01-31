@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { asImageSrc, isFilled } from '@prismicio/client';
 import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import Image from 'next/image';
 import type { HomeDocument } from '../../../../prismicio-types';
 import { useGSAP } from '@gsap/react';
+import { useFontsLoaded } from '@/app/contexts/fonts-loaded-context';
 
 // Try to import ScrollTrigger (premium plugin - optional)
 let ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger | null = null;
@@ -46,8 +47,10 @@ export default function HomeContent({ page }: AnimatedHomeProps) {
   const heroRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const worksRef = useRef<HTMLElement>(null);
+  const { fontsLoaded } = useFontsLoaded();
 
   useGSAP(() => {
+    if (!fontsLoaded) return;
     // Hero Attributes - query inside useGSAP (client-side only)
     const heroIntro = document.querySelector('[data-animation="hero-intro"]');
     const heroDescription = document.querySelector('[data-animation="hero-description"]');
@@ -379,7 +382,7 @@ export default function HomeContent({ page }: AnimatedHomeProps) {
         position
       );
     });
-  });
+  }, { dependencies: [fontsLoaded] });
 
   return (
     <>
