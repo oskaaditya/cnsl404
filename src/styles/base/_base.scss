@@ -231,5 +231,9 @@ a:not(#secondaryLink) {
 a:hover:not(#secondaryLink) {
   color: #FFF;
   box-shadow: inset 30rem 0 #171717;
+  
+  @include mixins.mobile {
+    box-shadow: inset 60rem 0 #171717;
+  }
 }
 
