@@ -1,12 +1,29 @@
+@use "../abstracts/mixins";
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2.4rem;
 
+    @include mixins.tablet {
+        padding: 4.2rem 4.8rem;
+    }
+
+    @include mixins.mobile {
+        padding: 8.4rem 4.8rem;
+    }
+
     .logo-text {
         font-size: 2rem;
         font-weight: 600;
+
+        @include mixins.tablet {
+            font-size: 3.6rem;
+        }
+
+        @include mixins.mobile {
+            font-size: 7.2rem;
+        }
     }
 
     .navigations {
@@ -19,6 +36,14 @@
             font-size: 1.6rem;
             width:auto;
             font-weight: 500;
+
+            @include mixins.tablet {
+                font-size: 3.2rem;
+            }
+
+            @include mixins.mobile {
+                font-size: 6.4rem;
+            }
         }
     }
 }

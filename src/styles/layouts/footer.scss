@@ -1,8 +1,14 @@
+@use "../abstracts/mixins";
+
 .footer {
     padding: 2.4rem 0 0 0;
     height: 45rem;
     width: 100%;
     overflow: hidden;
+
+    @include mixins.mobile {
+        height: 100rem;
+    }
 
         .footer-content-wrap{
             display: flex;
@@ -21,16 +27,41 @@
                 justify-content: space-between;
                 padding: 0 2.4rem;
 
+                @include mixins.mobile {
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: start;
+                    gap: 2rem;
+                }
+
                 .footer-message-available {
                     font-size: 3.2rem;
                     max-width: 40rem;
                     font-weight: 400;
+
+                    @include mixins.tablet {
+                        font-size: 4.2rem;
+                        max-width: 50rem;
+                    }
+
+                    @include mixins.mobile {
+                        font-size: 5.6rem;
+                        max-width: 120rem;
+                    }
                 }
 
                 .footer-connect-links {
                     display: flex;
                     gap: .6rem;
                     font-size: 1.6rem;
+
+                    @include mixins.tablet {
+                        font-size: 2.6rem;
+                    }
+
+                    @include mixins.mobile {
+                        font-size: 4rem;
+                    }
                 }
             }
 

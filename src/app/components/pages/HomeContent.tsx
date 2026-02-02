@@ -247,7 +247,7 @@ export default function HomeContent({ page }: AnimatedHomeProps) {
     // Works Timeline
     const worksSectionName = document.querySelector('[data-animation="works-section-name"]');
     const worksNumberSection = document.querySelector('[data-animation="works-number-section"]');
-    const worksDescription = document.querySelector('[data-animation="works-description"]');
+    const worksDescription = document.querySelector('[data-animation="works-section-description"]');
     const worksItems = document.querySelectorAll('[data-animation="works-item"]');
     const worksImages = document.querySelectorAll('[data-animation="works-image"]');
     const worksItemNames = document.querySelectorAll('[data-animation="works-item-name"]');
@@ -493,7 +493,7 @@ export default function HomeContent({ page }: AnimatedHomeProps) {
               </p>
             </div>
             <div className="works-content-middle">
-              <p data-animation="works-description" className="works-description">
+              <p data-animation="works-section-description" className="works-section-description">
                 {page.data.slices[1].primary.section_description}
               </p>
             </div>

@@ -5,16 +5,17 @@
 
 // Media queries
 @mixin mobile {
-  @media (max-width: calc(#{variables.$breakpoint-sm} - 0.1rem)) {
+  @media (max-width: calc(#{variables.$breakpoint-md} - 0.1rem)) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: #{variables.$breakpoint-sm}) and (max-width: calc(#{variables.$breakpoint-md} - 0.1rem)) {
+  @media (min-width: #{variables.$breakpoint-sm}) and (max-width: calc(#{variables.$breakpoint-lg} - 0.1rem)) {
     @content;
   }
 }
+
 
 @mixin desktop {
   @media (min-width: #{variables.$breakpoint-md}) {
